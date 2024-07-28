@@ -61,9 +61,7 @@ function addQuote() {
     const newQuote = { text: newQuoteText, category: newQuoteCategory };
     quotes.push(newQuote);
     saveQuotes();
-    updateCategoryFilter();
-    document.getElementById('newQuoteText').value = '';
-    document.getElementById('newQuoteCategory').value = '';
+    populateCategories();
     alert('Quote added successfully!');
   } else {
     alert('Please enter both quote text and category.');
@@ -90,7 +88,7 @@ function importFromJsonFile(event) {
       const importedQuotes = JSON.parse(event.target.result);
       quotes.push(...importedQuotes);
       saveQuotes();
-      updateCategoryFilter();
+      populateCategories();
       alert('Quotes imported successfully!');
     } catch (e) {
       alert('Invalid JSON file.');
