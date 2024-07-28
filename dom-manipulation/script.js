@@ -26,11 +26,11 @@ function saveLastSelectedCategory(category) {
 
 // Function to display a random quote
 function showRandomQuote() {
-  if (quotes.length === 0) {
+  const filteredQuotes = getFilteredQuotes();
+  if (filteredQuotes.length === 0) {
     document.getElementById('quoteDisplay').innerHTML = "<p>No quotes available.</p>";
     return;
   }
-  const filteredQuotes = getFilteredQuotes();
   const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
   const quote = filteredQuotes[randomIndex];
   const quoteDisplay = document.getElementById('quoteDisplay');
@@ -105,8 +105,8 @@ function getFilteredQuotes() {
   return selectedCategory === 'all' ? quotes : quotes.filter(quote => quote.category === selectedCategory);
 }
 
-// Function to update category filter dropdown
-function updateCategoryFilter() {
+// Function to populate categories dynamically in the dropdown
+function populateCategories() {
   const categories = ['all', ...new Set(quotes.map(quote => quote.category))];
   const categoryFilter = document.getElementById('categoryFilter');
   categoryFilter.innerHTML = categories.map(category => `<option value="${category}">${category}</option>`).join('');
@@ -130,7 +130,7 @@ document.getElementById('importFile').addEventListener('change', importFromJsonF
 
 // Load existing quotes from local storage, update category filter, and initialize the form
 loadQuotes();
-updateCategoryFilter();
+populateCategories();
 createAddQuoteForm();
 document.getElementById('categoryFilter').value = loadLastSelectedCategory();
 filterQuotes();
