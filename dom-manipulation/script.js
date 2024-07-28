@@ -28,7 +28,7 @@ function saveLastSelectedCategory(category) {
 function showRandomQuote() {
   const filteredQuotes = getFilteredQuotes();
   if (filteredQuotes.length === 0) {
-    document.getElementById('quoteDisplay').innerHTML = "<p>No quotes available.</p>";
+    document.getElementById('quoteDisplay').textContent = "No quotes available.";
     return;
   }
   const randomIndex = Math.floor(Math.random() * filteredQuotes.length);
