@@ -21,6 +21,9 @@
     </div>
     <input type="file" id="importFile" accept=".json" onchange="importFromJsonFile(event)" />
     <button onclick="exportToJsonFile()">Export to JSON</button>
+    <div id="conflictNotification" style="display: none; color: red;">
+        Data conflict detected! Server data has been used.
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
