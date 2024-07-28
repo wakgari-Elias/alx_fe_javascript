@@ -110,6 +110,7 @@ async function syncQuotes() {
         document.getElementById('conflictNotification').style.display = 'none';
     }
 
+    document.getElementById('syncNotification').textContent = 'Quotes synced with server!';
     document.getElementById('syncNotification').style.display = 'block';
     setTimeout(() => {
         document.getElementById('syncNotification').style.display = 'none';
