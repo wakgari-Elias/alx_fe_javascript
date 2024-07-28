@@ -109,6 +109,11 @@ async function syncQuotes() {
     } else {
         document.getElementById('conflictNotification').style.display = 'none';
     }
+
+    document.getElementById('syncNotification').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('syncNotification').style.display = 'none';
+    }, 3000);
 }
 
 // Initialize
